@@ -31,7 +31,7 @@ int main() {
     fgets(cmdline, MAXLINE, stdin);
 
     /* Извлекаем имя команды */
-    if ((cmd = strtok_r(cmdline, " \n")) == NULL) {
+    if ((cmd = strtok(cmdline, " \n")) == NULL) {
       continue;
     }
     /* Распознаем поддерживаемую команду */
@@ -44,7 +44,7 @@ int main() {
 
     /* Загружаем содержимое файла, заданного параметром */
     if (strcmp(cmd, "load") == 0) {
-      if ((arg = strtok_r(NULL, " \n")) == NULL) {
+      if ((arg = strtok(NULL, " \n")) == NULL) {
         fprintf(stderr, "Usage: load filename\n");
       } else
         load(txt, arg);
@@ -64,7 +64,7 @@ int main() {
 
      /* Меняем позицию курсора на заданную */
     if (strcmp(cmd, "mwcrsr") == 0) {
-      char *line = strtok_r(NULL, " \n"), *position = strtok_r(NULL, " \n");
+      char *line = strtok(NULL, " \n"), *position = strtok(NULL, " \n");
       if (line && position)
         mwcrsr(txt, atoi(line), atoi(position));
       else
